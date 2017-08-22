@@ -34,7 +34,6 @@ exports.addBook = (req, res) => {
 exports.findAllBook = (req, res) => {
   connect
   .then(db => {
-      console.log('aaa')
     db.collection('Books').find().toArray()
     .then(books => {
       res.send(books)
@@ -64,7 +63,7 @@ exports.updateBook = (req, res) => {
     .then(books => {
       let updater = {
         isbn     : req.body.isbn     || books.isbn,
-        title    : req.body.title    || books.isbn,
+        title    : req.body.title    || books.title,
         author   : req.body.author   || books.author,
         category : req.body.category || books.category,
         stock    : req.body.stock    || books.stock
